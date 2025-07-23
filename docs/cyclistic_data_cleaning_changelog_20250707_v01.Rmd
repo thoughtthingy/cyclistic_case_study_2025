@@ -1,0 +1,238 @@
+---
+title: "Cyclistic Data Cleaning Changelog"
+author: "James Kenneth Ines"
+date: "2025-07-06"
+output:
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float:
+      collapsed: false
+---
+
+
+
+# Changelog
+This file contains the notable changes to the project
+
+## Version 0 (07-06-2025)
+This version was the original version that was pre-cleaned to some extent using Google Sheets and was then ingested in Rstudio. The changes, fixes, and additions were all done in Google Sheets.
+
+### Fixes
+- No duplicates found for both Copy of CyclisticTrips2019_q1_20250706_v01 and Copy of CyclisticTrips2020_q1_20250706_v01
+- No whitespaces needing to be trimmed found
+
+### Changes
+- Cleared all formatting
+
+### New
+- Made a copy in Google Sheets
+
+### Removed
+- (Trips2020_q1)Deleted row with ride_id 157EAA4C4A3C8D36
+
+
+## Version 1 (07-07-2025)
+Started using R to clean the data
+
+
+### New
+- Set up environment
+
+```{r}
+getwd()
+setwd("~/Desktop/Cyclistic Case Study 2025")
+```
+
+- Installed and loaded necessary cleaning packages
+
+```{r message=FALSE, warning=FALSE}
+# Install packages
+install.packages("here", repos = "http://cran.us.r-project.org")
+install.packages("skimr", repos = "http://cran.us.r-project.org")
+install.packages("janitor", repos = "http://cran.us.r-project.org")
+install.packages("tidyverse", repos = "http://cran.us.r-project.org")  # Includes dplyr, lubridate, and more
+
+# Load packages
+library(here)
+library(skimr)
+library(janitor)
+library(tidyverse)  # Loads dplyr, lubridate, ggplot2, etc.
+```
+- Ingested datasets
+```{r}
+# Ingest data
+q1_2019 <- read.csv("Copy of CyclisticTrips2019_q1_20250706_v01 - Trips2019_q1.csv")
+q1_2020 <- read.csv("Copy of CyclisticTrips2020_q1_20250706_v01 - Trips2020_q1.csv")
+
+```
+
+
+- Summarized datasets
+
+```{r}
+skim_without_charts(q1_2019)
+glimpse(q1_2019)
+head(q1_2019)
+colnames(q1_2019)
+
+skim_without_charts(q1_2020)
+glimpse(q1_2020)
+head(q1_2020)
+colnames(q1_2020)
+```
+
+### Removed
+- (Trips2019_q1)Removed outliers in tripduration column that is less than 60 seconds and more than 86400 seconds(24 hours)
+
+```{r warning=FALSE}
+q1_2019_cleaned_v1 <- q1_2019 %>%
+  filter(tripduration >= 60 & tripduration <=86400)
+
+# Count rows before and after
+cat("Original rows:", nrow(q1_2019), "\n")
+cat("Cleaned rows:", nrow(q1_2019_cleaned_v1), "\n")
+```
+
+## Version 2 (07-08-2025)
+
+
+### New
+- (q1_2019 and q1_2020)Added weekday column
+- (q1_2020) added tripduration column
+
+```{r}
+# Add weekday column for v2
+
+install.packages("hms", repos = "http://cran.us.r-project.org")
+library(hms)
+
+q1_2019_cleaned_v2 <- q1_2019_cleaned_v1 %>%
+  separate(start_time, into=c("start_date", "start_time"), sep=" ") %>% 
+  separate(end_time, into=c("end_date", "end_time"), sep=" ") %>% 
+  
+  mutate(start_time = hms::as_hms(start_time),
+         end_time = hms::as_hms(end_time)) %>%
+  mutate(start_date = as.Date(start_date, format = "%m/%d/%Y"),
+         end_date = as.Date(end_date, format = "%m/%d/%Y")) %>% 
+  
+  mutate(weekday = factor(weekdays(start_date), 
+                          levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")))
+
+
+head(q1_2019_cleaned_v2 %>% select(start_time, end_time, weekday, tripduration))
+nrow(q1_2019_cleaned_v2)
+summary(q1_2019_cleaned_v2$tripduration)
+
+# Added tripduration and weekday columns for q1_2020_cleaned_v1
+
+q1_2020_cleaned_v1 <- q1_2020 %>%
+  separate(started_at, into=c("start_date", "start_time"), sep=" ") %>% 
+  separate(ended_at, into=c("end_date", "end_time"), sep=" ") %>% 
+  
+  mutate(start_time = hms::as_hms(start_time),
+         end_time = hms::as_hms(end_time)) %>%
+  mutate(start_date = as.Date(start_date, format = "%m/%d/%Y"),
+         end_date = as.Date(end_date, format = "%m/%d/%Y")) %>% 
+  # Add tripduration column
+  mutate(tripduration = end_time - start_time) %>% 
+  # Add weekday column
+  mutate(weekday = factor(weekdays(start_date), 
+                          levels = c("Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")))
+
+
+head(q1_2020_cleaned_v1 %>% select(start_time, end_time, weekday, tripduration))
+arrange(q1_2020_cleaned_v1, desc(tripduration))
+```
+
+### Fixes
+- (Trips2020_q1)Removed outliers for tripduration
+
+```{r}
+
+q1_2020_cleaned_v2 <- q1_2020_cleaned_v1 %>%
+  filter(tripduration >= 60 & tripduration <=86400)
+
+head(q1_2020_cleaned_v2)
+nrow(q1_2020_cleaned_v1)
+nrow(q1_2020_cleaned_v2)
+```
+## Version 3 (07-10-2025)
+
+
+### Fixes
+- (q1_2019 and q1_2020)Cleaned column names
+- (q1_2019 and q1_2020)Checked for NA values
+
+### New
+- Added tripduration_minutes column
+
+```{r}
+q1_2019_cleaned_v3 <- q1_2019_cleaned_v2 %>% 
+  mutate(tripduration_minutes = as.numeric(difftime(end_time, start_time, units = "mins")))
+
+clean_names(q1_2019_cleaned_v3) # Cleaned column names
+colSums(is.na(q1_2019_cleaned_v3)) # check for NA values
+head(q1_2019_cleaned_v3)
+
+q1_2020_cleaned_v3 <- q1_2020_cleaned_v2 %>% 
+  mutate(tripduration_minutes = as.numeric(difftime(end_time, start_time, units = "mins")))
+
+clean_names(q1_2019_cleaned_v3) # Cleaned column names
+colSums(is.na(q1_2019_cleaned_v3)) # check for NA values
+head(q1_2020_cleaned_v3)
+```
+
+
+
+## Version 4 (07-14-2025)
+
+
+### Fixes
+- (q1_2019 and q1_2020)Noticed some whitespace and removed it
+
+### Changes
+- (q1_2019 and q1_2020)Removed asterisks on the station name addresses
+- (q1_2019 and q1_2020)Converted station names to title-case
+- (q1_2020)Changed column names to match q1_2019 column names
+
+```{r}
+names(q1_2020_cleaned_v3)
+unique(q1_2020_cleaned_v3$start_station_name)
+unique(q1_2020_cleaned_v3$end_station_name)
+
+q1_2020_cleaned_v3 %>%
+  filter(grepl("\\*", start_station_name) | grepl("\\*", end_station_name)) %>%
+  select(start_station_name, end_station_name) %>%
+  head()
+
+q1_2020_cleaned_v4 <- q1_2020_cleaned_v3 %>%
+  # Clean station names: remove whitespace, asterisks, and convert to title case
+  mutate(start_station_name = trimws(start_station_name),  # Remove leading/trailing whitespace
+         end_station_name = trimws(end_station_name),
+         start_station_name = gsub("\\s*\\(\\*\\)|\\s*\\(temp\\)", "", start_station_name),  # Remove asterisks
+         end_station_name = gsub("\\s*\\(\\*\\)|\\s*\\(temp\\)", "", end_station_name),
+         start_station_name = tools::toTitleCase(tolower(start_station_name)),  # Convert to title case
+         end_station_name = tools::toTitleCase(tolower(end_station_name)))
+
+q1_2020_cleaned_v4 %>%
+  filter(grepl("\\*", start_station_name) | grepl("\\*", end_station_name)) %>%
+  select(start_station_name, end_station_name) %>%
+  head()
+
+# changing column names for possible data aggregation
+names(q1_2020_cleaned_v4) [1] <- "trip_id"
+names(q1_2020_cleaned_v4) [2] <- "bike_id"
+names(q1_2020_cleaned_v4) [7] <- "from_station_name"
+names(q1_2020_cleaned_v4) [8] <- "from_station_id"
+names(q1_2020_cleaned_v4) [9] <- "to_station_name"
+names(q1_2020_cleaned_v4) [10] <- "to_station_id"
+names(q1_2020_cleaned_v4) [15] <- "usertype"
+
+
+colnames(q1_2020_cleaned_v4)
+```
+
+
+
+
