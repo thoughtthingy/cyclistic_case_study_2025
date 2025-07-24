@@ -560,35 +560,36 @@ The casual users are using their bikes for longer trips and less frequent trips.
 
   
 
-**Guiding questions**
+#### Guiding questions
 
   
 
-- What is your final conclusion based on your analysis? - Casual users use their bikes for leisure or exercise. Members use their bikes to commute to and from work.
+- What is your final conclusion based on your analysis?
+	> **Casual users use their bikes for leisure or exercise. Members use their bikes to commute to and from work.**
 
   
 
-- How could your team and business apply your insights? - They can use the usage insights to answer the second question on why would casual riders buy Cyclistic annual memberships? The team can also answer the third question on how can Cyclistic use digital media to influence casual riders to become members? This will give the team a target to focus on which is the fact that casual users use their bikes for leisure and exercise.
+- How could your team and business apply your insights?
+	> **They can use the usage insights to answer the second question on why  casual riders buy Cyclistic annual memberships. The team can also answer the third question on how Cyclistic can use digital media to influence casual riders to become members. This will give the team a target to focus on, which is the fact that casual users use their bikes for leisure.**
 
   
 
 - What next steps would you or your stakeholders take based on your findings?
 
-  
-
-1. Determine in what ways leisure cyclist activities can convert casual users to annual members(savings, marketing, etc)
-
-  
-
-2. Brainstorm for ways on how digital media can be used to effectively communicate these insights and “conversion points” to casual users
+ 
+	> **1. Determine in what ways leisure cycling activities can convert casual users to annual members(savings, marketing, etc)**
 
   
 
-3. Create an overall digital marketing plan that focusses on converting casual users to annual members that leverages on the previous two recommendations
+	> **2. Brainstorm for ways on how digital media can be used to effectively communicate these insights and “conversion points” to casual users**
 
   
 
-**Key tasks**
+	> **3. Create an overall digital marketing plan that focuses on converting casual users to annual members that leverages the previous two recommendations.**
+
+  
+
+#### Key tasks
 
   
 
@@ -608,5 +609,37 @@ The casual users are using their bikes for longer trips and less frequent trips.
 
 Your top three recommendations based on your analysis
 
+#### Executive Summary
+
+This recommendation outlines a strategic approach to enhance customer engagement and conversion by leveraging targeted digital advertising. The campaign focuses on three key pillars: highlighting cost savings to convert casual users, targeting Sunday activities for optimal ad placement, and promoting a leisure-focused lifestyle centered on travel, exercise, and family. This strategy aims to resonate with the target audience, drive conversions, and foster brand loyalty.
+
+**1. Highlight Cost Savings to Convert Casual Users**
+
+To transform casual users into loyal customers, the campaign will emphasize the tangible financial benefits of adopting the product or service. By showcasing clear, data-driven savings—such as percentage discounts, reduced costs compared to competitors, or long-term value propositions—the advertising content will appeal to cost-conscious consumers. 
+
+This approach will position the brand as a cost-effective solution, encouraging casual users to commit to a subscription or long-term engagement.
+
+**2. Target Sunday Activities for Digital Advertising**
+
+Sundays represent a prime opportunity for reaching audiences when they are most receptive to leisure-focused messaging. By strategically timing digital ad placements, the campaign will capitalize on consumer behavior during this high-engagement day. 
+
+By aligning ad delivery with Sunday’s relaxed and aspirational mindset, the campaign will maximize engagement and click-through rates.
+
+**3. Promote a Leisure-Focused Lifestyle**
+
+The campaign will sell an aspirational lifestyle centered on travel, exercise, and family, positioning the product or service as an enabler of meaningful experiences. This approach will resonate with consumers seeking balance and fulfillment in their leisure time. 
+ 
+By aligning the brand with a desirable lifestyle, the campaign will foster emotional connections, driving both engagement and long-term loyalty.
+
+#### Conclusion
+
+This case study recommends a multifaceted digital advertising strategy that converts casual users by emphasizing cost savings, targets Sunday activities for maximum impact, and promotes a lifestyle focused on travel, exercise, and family. By using personalized data, well-timed ads, and heartfelt storytelling, the campaign will convert more casual users to being members.[^1]
+
 ## Limitations
 
+- As of the true time of when this study was created, July 2025, the dataset is no longer current. It is recommended that a study be made with a more recent dataset.
+- Seasons and holidays were not accounted for as the datasets were only for quarter 1 of 2019 and 2020. It is recommended that a year-round study be made.
+
+---
+
+[^1]: Case Study by James Kenneth Ines of General Santos City finished  on July 24, 2025
