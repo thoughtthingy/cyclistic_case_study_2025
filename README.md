@@ -4,7 +4,7 @@
 
 ## Introduction and Background
 
-In this case study, I will act as a junior data analyst for Cyclistic, a fictional bike-share company based in Chicago, using Google Sheets, R, and Tableau Public. I will conduct descriptive data analysis to address the key question: How do annual members and casual riders differ in their use of Cyclistic bikes? Upon completing the analysis, I will deliver an executive summary with actionable insights for the executive team.
+In this case study, I will act as a junior data analyst for Cyclistic, a fictional bike-share company based in Chicago, using Google Sheets, R, and Tableau Public. I will conduct descriptive data analysis to address the key question: How do annual members and casual riders differ in their use of Cyclistic bikes? Upon completing the analysis, I will deliver an executive summary with actionable insights for the executive team.[^1]
 
 ### Source Files
 Raw Dataset: [Divvy 2019 Q1](https://docs.google.com/spreadsheets/d/1uCTsHlZLm4L7-ueaSLwDg0ut3BP_V4mKDo2IMpaXrk4/template/preview?resourcekey=0-dQAUjAu2UUCsLEQQt20PDA#gid=1797029090), [Divvy 2020 Q1](https://docs.google.com/spreadsheets/d/179QVLO_yu5BJEKFVZShsKag74ZaUYIF6FevLYzs3hRc/template/preview#gid=640449855)
@@ -593,11 +593,11 @@ The casual users are using their bikes for longer trips and less frequent trips.
 
   
 
-- Create your portfolio.
+- [x]  Create your portfolio.
 
-- Add your case study.
+-  [x] Add your case study.
 
-- Practice presenting your case study to a friend or family member.
+- [x]  Practice presenting your case study to a friend or family member.
 
   
 
@@ -633,7 +633,7 @@ By aligning the brand with a desirable lifestyle, the campaign will foster emoti
 
 #### Conclusion
 
-This case study recommends a multifaceted digital advertising strategy that converts casual users by emphasizing cost savings, targets Sunday activities for maximum impact, and promotes a lifestyle focused on travel, exercise, and family. By using personalized data, well-timed ads, and heartfelt storytelling, the campaign will convert more casual users to being members.[^1]
+This case study recommends a multifaceted digital advertising strategy that converts casual users by emphasizing cost savings, targets Sunday activities for maximum impact, and promotes a lifestyle focused on travel, exercise, and family. By using personalized data, well-timed ads, and heartfelt storytelling, the campaign will convert more casual users to being members.
 
 ## Limitations
 
@@ -642,4 +642,4 @@ This case study recommends a multifaceted digital advertising strategy that conv
 
 ---
 
-[^1]: Case Study by James Kenneth Ines of General Santos City finished  on July 24, 2025
+[^1]: Case Study by James Kenneth Ines of General Santos City, Philippines finished  on July 24, 2025
