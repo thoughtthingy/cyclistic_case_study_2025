@@ -45,7 +45,7 @@ all_trips <- bind_rows(q1_2019, q1_2020)#, q3_2019)#, q4_2019, q1_2020)
 
 # Remove lat, long, birthyear, and gender fields as this data was dropped beginning in 2020
 all_trips <- all_trips %>%  
-  select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, gender, "tripduration_minutes",  "...1"))
+  select(-c(start_lat, start_lng, end_lat, end_lng, birthyear, gender,  "...1"))
 
 #======================================================
 # STEP 3: CLEAN UP AND ADD DATA TO PREPARE FOR ANALYSIS
@@ -172,7 +172,7 @@ print(counts, n = 20, width = Inf)
 # Create a csv file that we will visualize in Excel, Tableau, or any presentation software
 write.csv(counts, "ride_summary_by_usertype_day.csv", row.names = FALSE)
 # just saving the entire dataset
-write.csv(all_trips_v2, "AllTrips_q1")
+write.csv(all_trips_v2, "AllTrips_q1", row.names = FALSE)
 
 
 
